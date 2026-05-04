@@ -9,38 +9,81 @@
 
 using namespace std;
 
-
+//template <class T>
 class Person {
 private:
     string name;
-    int age;
-    int height;
-    int copy_depth;
+    int* age;
+    int* height;
+    int* copy_depth;
+    
+//    int age;
+//    int height;
+//    int copy_depth;
     
     
 public:
     Person(string n, int _age, int _height){
         name = n;
-        age = _age;
-        height = _height;
-        copy_depth = 0;
-       
+        age = new int;
         
+        
+        height = new int;
+        
+        copy_depth = new int;
+        
+        //*name = n;
+        *age = _age;
+        *height = _height;
+        *copy_depth = 0;
+
+    }
+    
+    Person(){
+
     }
     
     Person(const Person& other){
+        
+        age = new int;
+        
+        
+        height = new int;
+        
+        copy_depth = new int;
+
+
+        
+        
+        *age = *other.age;
+        *height = *other.height;
+        *copy_depth = *other.copy_depth;
         copy_depth ++;
     }
     
     ~Person(){
+        delete age, height, copy_depth;
+        
         cout << "Deallocated" << endl;
     }
     
-//    void operator=(const Person& other){
-//        delete ptr;
-//        ptr = new T;
-//        *ptr = *other.ptr;
-//    }
+    void operator=(const Person& other){
+        delete age, height, copy_depth;
+        
+        age = new int;
+        
+        
+        height = new int;
+        
+        copy_depth = new int;
+        
+        
+        *age = *other.age;
+        *height = *other.height;
+        *copy_depth = *other.copy_depth;
+    }
+    
+
     
     void print(){
         cout << "Hello, My name is " << name << ". I am " << age << " years old and my height is " << height << "." << endl;
