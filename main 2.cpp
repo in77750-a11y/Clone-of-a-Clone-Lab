@@ -11,12 +11,6 @@
 
 using namespace std;
 
-double distortValue(double original, double maxPercent) {
-    double variation = original * maxPercent * ((rand() % 100 - 50) / 100.0);
-    return original + variation;
-}
-
-
 
 class MyPerson {
 private:
